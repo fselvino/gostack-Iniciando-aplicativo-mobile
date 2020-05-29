@@ -13,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
+import api from '../../services/api';
 
 import logoImg from '../../assets/logo.png';
 import Input from '../../components/Input';
@@ -46,17 +47,25 @@ const SignUp: React.FC = () => {
         password: Yup.string().min(6, 'Minimo 6 caracteres'),
       });
       await schema.validate(data, { abortEarly: false });
+      console.log(data);
 
-      //await api.post('/users', data);
+      await api.post('/users', data);
 
-      //history.push('/');
+      Alert.alert(
+        'Cadastro realizado com sucesso',
+        'Você já pode fazer login na aplicação',
+      );
+
+      navigation.goBack();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
+
         formRef.current?.setErrors(errors);
 
         return;
       }
+      console.log(err);
       Alert.alert(
         'Erro no Cadastro',
         'Ocorreu um erro ao fazer cadastro, tente novamente',
