@@ -1,9 +1,9 @@
 import React, {
   useEffect,
   useRef,
-  useCallback,
   useImperativeHandle,
   forwardRef,
+  useCallback,
   useState,
 } from 'react';
 import { TextInputProps } from 'react-native';
@@ -29,7 +29,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
 ) => {
   const inputElementRef = useRef<any>(null);
   const { registerField, defaultValue = '', fieldName, error } = useField(name);
-  const inputValueRef = useRef<inputValueReference>({ value: 'defaultValue' });
+  const inputValueRef = useRef<inputValueReference>({ value: defaultValue });
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -65,7 +65,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   }, [fieldName, registerField]);
 
   return (
-    <Container isFocused={isFocused}>
+    <Container isFocused={isFocused} isErrored={!!error}>
       <Icon
         name={icon}
         size={20}
