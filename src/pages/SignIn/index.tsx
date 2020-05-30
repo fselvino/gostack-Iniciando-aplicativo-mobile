@@ -13,9 +13,8 @@ import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import { Form } from '@unform/mobile';
 import { FormHandles } from '@unform/core';
-import { useAuth } from '../../hooks/auth';
 
-//import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -44,6 +43,7 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation();
 
   const { signIn } = useAuth();
+  //console.log(user);
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
