@@ -15,6 +15,8 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.4.3",
     "@react-navigation/stack": "^5.4.0",
+    "@type/": "react-navigation/native",
+    "@types/": "react-navigation/native",
     "@types/styled-components": "^5.1.0",
     "@unform/core": "^2.1.0",
     "@unform/mobile": "^2.1.0",
